@@ -18,8 +18,8 @@ export class App {
   }
 
   private listen(): void {
-    this.app.listen(process.env.HTTP_PORT, () => {
-      console.log(`Server connected to port: ${process.env.HTTP_PORT}`);
+    this.app.listen(process.env.PORT, () => {
+      console.log(`Server connected to port: ${process.env.PORT}`);
     });
   }
 
