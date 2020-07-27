@@ -17,7 +17,7 @@ SpotifyRouter.get('/', spotifyAuthMiddleware);
 
 SpotifyRouter.get('/callback', async function (req: Request, res: Response, next: NextFunction) {
   passport.authenticate(SocialMediaType.SPOTIFY, async (input) => {
-    console.log(input);
+    return res.send(input);
   })(req, res, next);
 });
 
