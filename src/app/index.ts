@@ -1,12 +1,16 @@
 import mongoConnect from '../connections/mongoConnection';
 import express, { Application } from 'express';
 import Routes from './routes';
+import passport from 'passport';
+import bodyParser from 'body-parser';
 
 export class App {
   public app: Application;
 
   constructor() {
     this.app = express();
+    this.app.use(bodyParser.json());
+    this.app.use(passport.initialize());
   }
 
   private async connectToMongo(): Promise<void> {
