@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import passport from 'passport';
 import { SocialMediaType } from '../../../../enums/auth';
-import { ConfigureStratergy as ConfigureStrategy } from '../configureStrategy';
+import { ConfigureStrategy } from '../configureStrategy';
 
 const SpotifyRouter = Router();
 ConfigureStrategy.spotifyStrategy(passport);
