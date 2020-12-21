@@ -2,7 +2,7 @@ import { PassportStatic } from 'passport';
 import SpotifyStrategy from 'passport-spotify';
 
 export class ConfigureStratergy {
-  static spotifyStratergy(passport: PassportStatic): void {
+  static spotifyStrategy(passport: PassportStatic): void {
     passport.use(
       new SpotifyStrategy.Strategy(
         {

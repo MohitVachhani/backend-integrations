@@ -1,10 +1,10 @@
+import { NextFunction, Request, Response, Router } from 'express';
 import passport from 'passport';
-import { Request, Response, Router, NextFunction } from 'express';
-import { ConfigureStratergy } from '../configureStratergy';
 import { SocialMediaType } from '../../../../enums/auth';
+import { ConfigureStratergy as ConfigureStrategy } from '../configureStrategy';
 
 const SpotifyRouter = Router();
-ConfigureStratergy.spotifyStratergy(passport);
+ConfigureStrategy.spotifyStrategy(passport);
 const spotifyScopes = ['user-read-email', 'user-read-private'];
 
 function spotifyAuthMiddleware(req: Request, res: Response, next: NextFunction): void {
