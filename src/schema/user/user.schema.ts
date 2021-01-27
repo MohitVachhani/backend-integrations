@@ -20,4 +20,8 @@ export class UserType extends BaseEntitySchema {
   @Field(() => SignUpTypeEnum)
   @Property({ type: String, enum: SignUpTypeEnum })
   signUpType: SignUpTypeEnum;
+
+  @Field(() => String, { nullable: true })
+  @Property({ type: String, required: false })
+  profilePicture?: string;
 }

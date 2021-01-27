@@ -8,13 +8,19 @@ export class ConfigureStrategy {
         {
           clientID: process.env.SPOTIFY_CLIENT_ID,
           clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-          callbackURL: process.env.SPOTIFY_CALLBACK_URL,
+          callbackURL: process.env.SPOTIFY_LOCAL_CALLBACK_URL,
         },
-        function (accessToken, refreshToken, expiresIn, profile, done) {
+        function (
+          accessToken: string,
+          refreshToken: string,
+          profile: SpotifyStrategy.Profile,
+          done: (error?: Error | null, user?: SpotifyStrategy.Profile, info?: object) => void
+        ) {
           console.log(accessToken);
           console.log(refreshToken);
-          console.log(expiresIn);
-          console.log(profile);
+
+          console.log('profile inside callback:', profile);
+          return done(null, profile);
         }
       )
     );
