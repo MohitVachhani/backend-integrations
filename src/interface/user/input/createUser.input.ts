@@ -5,4 +5,6 @@ export interface CreateUserInput {
   lastName: UserType['lastName'];
   signUpType: UserType['signUpType'];
   profilePicture: UserType['profilePicture'];
+  emailId: UserType['emailId'];
+  createdById: UserType['createdById'];
 }

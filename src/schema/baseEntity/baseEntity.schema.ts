@@ -22,7 +22,4 @@ export class BaseEntitySchema {
   @Field(() => String)
   @Property({ type: Date, required: false })
   updatedAt: string;
-
-  @Property({ type: String, default: [] })
-  permissions: string[];
 }

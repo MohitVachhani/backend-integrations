@@ -16,10 +16,6 @@ export class ConfigureStrategy {
           profile: SpotifyStrategy.Profile,
           done: (error?: Error | null, user?: SpotifyStrategy.Profile, info?: object) => void
         ) {
-          console.log(accessToken);
-          console.log(refreshToken);
-
-          console.log('profile inside callback:', profile);
           return done(null, profile);
         }
       )

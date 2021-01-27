@@ -7,7 +7,7 @@ class UserRepository {
 
   getUserModel(): void {
     if (!this.UserModel) {
-      this.UserModel = getModelForClass(UserType, { schemaOptions: { collection: 'users' } });
+      this.UserModel = getModelForClass(UserType, { schemaOptions: { collection: 'users', timestamps: true } });
     }
   }
 
