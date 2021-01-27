@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-integrations
-          tags: ${{ GITHUB_SHA }}
+          tags: $GITHUB_SHA
       - name: Build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
