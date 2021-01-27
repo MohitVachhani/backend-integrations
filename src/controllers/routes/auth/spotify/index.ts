@@ -1,4 +1,5 @@
-import { SignUpTypeEnum } from '@enums/user';
+import { AuthTypeEnum, SignUpTypeEnum } from '@enums/user';
+import { UserAuthenticatePayload } from '@interface/user/payload/userAuthenticate.payload';
 import { userService } from '@services/user/user.service';
 import { NextFunction, Request, Response, Router } from 'express';
 import passport from 'passport';
@@ -19,23 +20,33 @@ function spotifyAuthMiddleware(req: Request, res: Response, next: NextFunction):
 SpotifyRouter.get('/', spotifyAuthMiddleware);
 
 SpotifyRouter.get('/callback', async function (req: Request, res: Response, next: NextFunction) {
-  passport.authenticate(SignUpTypeEnum.SPOTIFY, async (error, input: SpotifyStrategy.Profile) => {
-    const { displayName, emails, photos } = input;
+  passport.authenticate(
+    SignUpTypeEnum.SPOTIFY,
+    async (error, input: SpotifyStrategy.Profile): Promise<Response<UserAuthenticatePayload>> => {
+      const { displayName, emails, photos } = input;
 
-    const [firstName, lastName] = displayName.split(' ');
-    const emailId = emails[0].value;
+      const [firstName, lastName] = displayName.split(' ');
+      const emailId = emails[0].value;
 
-    const user = await userService.createUser({
-      firstName,
-      lastName,
-      signUpType: SignUpTypeEnum.SPOTIFY,
-      profilePicture: photos[0],
-      emailId,
-      createdById: '60105fa80000000000000000',
-    });
+      const { users } = await userService.getUsers({ filters: { emailIds: [emailId] }, projection: { emailId: 1 } });
+      const [user] = users;
 
-    return res.send({ success: true, user });
-  })(req, res, next);
+      if (user) {
+        return res.send({ success: true, user, authType: AuthTypeEnum.LOGIN });
+      }
+
+      const createdUser = await userService.createUser({
+        firstName,
+        lastName,
+        signUpType: SignUpTypeEnum.SPOTIFY,
+        profilePicture: photos[0],
+        emailId,
+        createdById: '60105fa80000000000000000',
+      });
+
+      return res.send({ success: true, user: createdUser, authType: AuthTypeEnum.SIGN_UP });
+    }
+  )(req, res, next);
 });
 
 export default SpotifyRouter;
