@@ -20,10 +20,17 @@
     "paths": {
       "*": ["node_modules/*", "src/types/*"],
       "@interface/*": ["src/interface/*"],
+      "@controllers/*": ["src/controllers/*"],
       "@services/*": ["src/services/*"],
       "@models/*": ["src/models/*"],
       "@errors/*": ["src/errors/*"],
-      "@__grpc/*": ["src/__grpc/*"]
+      "@utils/*": ["src/utils/*"],
+      "@app/*": ["src/app/*"],
+      "@appConfigs/*": ["src/appConfigs/*"],
+      "@connections/*": ["src/connections/*"],
+      "@__transports/*": ["src/__transports/*"],
+      "@enums/*": ["src/enums/*"],
+      "@schema/*": ["src/schema/*"]
     }
   },
   "include": ["src/**/*"],

@@ -38,9 +38,27 @@
     "ts-jest": "^26.1.1",
     "ts-node": "^8.10.2",
     "tsutils": "^3.17.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "@types/graphql": "^14.5.0"
+  },
+  "_moduleAliases": {
+    "@interface": "dist/interface",
+    "@controllers": "dist/controllers",
+    "@services": "dist/services",
+    "@models": "dist/models",
+    "@errors": "dist/errors",
+    "@utils": "dist/utils",
+    "@connections": "dist/connections",
+    "@app": "dist/app",
+    "@appConfigs": "dist/appConfigs",
+    "@__transports": "dist/__transports",
+    "@enums": "dist/enums",
+    "@schema": "dist/schema"
   },
   "dependencies": {
+    "class-validator": "0.12.2",
+    "graphql": "^15.1.0",
+    "type-graphql": "1.1.1",
     "@typegoose/typegoose": "^7.2.0",
     "@types/passport-spotify": "^1.1.0",
     "bluebird": "^3.7.2",
@@ -52,10 +70,11 @@
     "express-request-id": "^1.4.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.20",
+    "mongoose": "5.10.7",
     "passport": "^0.4.1",
     "passport-spotify": "^1.1.0",
     "@sendgrid/mail": "^7.2.0",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "module-alias": "^2.2.2"
   }
 }
