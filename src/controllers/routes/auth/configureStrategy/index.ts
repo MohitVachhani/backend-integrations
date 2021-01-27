@@ -8,7 +8,7 @@ export class ConfigureStrategy {
         {
           clientID: process.env.SPOTIFY_CLIENT_ID,
           clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-          callbackURL: process.env.SPOTIFY_LOCAL_CALLBACK_URL,
+          callbackURL: process.env.SPOTIFY_CALLBACK_URL,
         },
         function (
           accessToken: string,
