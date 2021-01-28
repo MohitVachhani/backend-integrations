@@ -7,4 +7,5 @@ export interface CreateUserInput {
   profilePicture: UserType['profilePicture'];
   emailId: UserType['emailId'];
   createdById: UserType['createdById'];
+  lastLogin?: UserType['lastLogin'];
 }

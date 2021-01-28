@@ -32,7 +32,8 @@ SpotifyRouter.get('/callback', async function (req: Request, res: Response, next
       const [user] = users;
 
       if (user) {
-        return res.send({ success: true, user, authType: AuthTypeEnum.LOGIN });
+        const updatedUser = await userService.updateUser({ emailIds: [emailId] }, { lastLogin: new Date().toISOString() });
+        return res.send({ success: true, user: updatedUser, authType: AuthTypeEnum.LOGIN });
       }
 
       const createdUser = await userService.createUser({

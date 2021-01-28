@@ -24,4 +24,8 @@ export class UserType extends BaseEntitySchema {
   @Field(() => String, { nullable: true })
   @Property({ type: String, required: false })
   profilePicture?: string;
+
+  @Field(() => String, { nullable: true })
+  @Property({ type: Date })
+  lastLogin?: string;
 }
