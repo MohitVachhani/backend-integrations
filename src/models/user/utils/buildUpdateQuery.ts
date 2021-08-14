@@ -10,7 +10,9 @@ export function buildUserUpdateQuery(toUpdateFields: UpdateUserInput): UpdateQue
       case 'lastName':
       case 'lastLogin':
       case 'profilePicture': {
-        updateQuery[key] = toUpdateFields[key];
+        if (toUpdateFields[key]) {
+          updateQuery[key] = toUpdateFields[key];
+        }
         break;
       }
     }
